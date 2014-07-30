@@ -25,34 +25,42 @@ function initialize()
 {
   var mapProp = {
     center: new google.maps.LatLng(50.375201,-4.138364),
-    one: new google.maps.LatLng(50.375201,-4.13864),
-    two: new google.maps.LatLng(50.37528625954953,-4.1366758346557),
-    three:new google.maps.LatLng(50.372528233411074,-4.13254404067993),
-    four:new google.maps.LatLng(50.37413803566616,-4.1330800056457),
-    five:new google.maps.LatLng(50.372627415540514,-4.13097333908082),
+    one: new google.maps.LatLng(50.374846,-4.140444),
+    two: new google.maps.LatLng(50.372627,-4.13095),
+    three:new google.maps.LatLng(50.372527,-4.13252),
     zoom:15,
     mapTypeId: google.maps.MapTypeId.ROADMAP
   };
   var myMap = new google.maps.Map(document.getElementById("googleMap"),mapProp);
-  new google.maps.Marker({
+  var marker1 = new google.maps.Marker({
     position: mapProp.two,
     map: myMap
   });
-  new google.maps.Marker({
+  var marker2 = new google.maps.Marker({
     position: mapProp.one,
     map: myMap
   });
-   new google.maps.Marker({
+  var marker3 = new google.maps.Marker({
     position: mapProp.three,
     map: myMap
   });
-   new google.maps.Marker({
-    position: mapProp.four,
-    map: myMap
+  var infowindow1 = new google.maps.InfoWindow({
+    content: 'test1'
   });
-  new google.maps.Marker({
-    position: mapProp.five,
-    map: myMap
+  var infowindow2 = new google.maps.InfoWindow({
+    content: 'test2'
+  });
+  var infowindow3 = new google.maps.InfoWindow({
+    content: 'test3'
+  });
+  google.maps.event.addListener(marker1, 'click', function(){
+    infowindow1.open(myMap,marker1);
+  });
+  google.maps.event.addListener(marker2, 'click', function(){
+    infowindow2.open(myMap,marker2);
+  });
+  google.maps.event.addListener(marker3, 'click', function(){
+    infowindow3.open(myMap,marker3);
   });
 }
 
@@ -68,12 +76,7 @@ window.onload = loadScript;
 </script>
 
 
-
-
-
-  
-
-  </head>
+</head>
   <body>
 
   <div class="row text-center">
@@ -82,35 +85,8 @@ window.onload = loadScript;
   
   </div>
 
-<header class="navbar navbar-default navbar-static-top" role="banner">
-  <div class="container">
-    <div class="navbar-header">
-      <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".navbar-collapse">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <a href="/" class="navbar-brand">gamebook</a>
-    </div>
-    <nav class="collapse navbar-collapse" role="navigation">
-      <ul class="nav navbar-nav">
-        <li>
-         <a href="home.html"> <span class="glyphicon glyphicon-home"></span> home</a>
-        </li>
-        <li>
-          <a href="account.html"> <span class="glyphicon glyphicon-user"></span> account</a>
-        </li>
-        <li>
-          <a href="events.html"> <span class="glyphicon glyphicon-map-marker"></span> events</a>
-        </li>
-        <li>
-          <a href="contact.html"> <span class="glyphicon glyphicon-phone"></span> contact us</a>
-        </li>
-      </ul>
-    </nav>
-  </div>
-</header>
+{% include "header.html" %}
+
 
 <!-- Begin Body -->
 <div class="container">
@@ -122,29 +98,33 @@ window.onload = loadScript;
             
                 
           </div> 
-      <div class="col-md-3" id="leftCol">
+
+
+
+      <div class="col-md-3" id="rightCol">
                 
         <div class="well"> 
                 <ul class="nav nav-stacked" id="sidebar">
-                  <li><a href="#sec1">
-          <h4>
+                  
+          
 {% if events %}
-    <ul>
+    
     {% for event in events %}
-     {{ event.Game }} 
+     <li > <a href="#sec2" > 
+      <h4> {{ event.Game }} 
      {% if  event.Verified  %}
         <span class="glyphicon glyphicon-ok"></span> 
      {% else %}
         <span class="glyphicon glyphicon-remove"></span>
      {% endif %}
-
- </h4>
+</h4>
+ 
   <p> {{ event.Description }} </p>
   <p> {{ event.Postcode }} </p>
   <p> Minimum Age: {{ event.Min_Age }} </p>
   <p> {{ event.Time_Date }} </p>
   <p> Attendees: {{ event.People_Attending }} / {{ event.People_Limit }} </p>
-
+  </li>
     {% endfor %}
     </ul>
 {% else %}
@@ -154,37 +134,8 @@ window.onload = loadScript;
 
           </a>
           </li>
-                  <li><a href="#sec2">
-          <h4>wow event <span class="glyphicon glyphicon-ok"></span> </h4>
-          <p> come play world of war craft at DA7 KHJ<p>
-          <p> 19 miles<p>
-          <p> 31/10/14<p>
-          </a>
-          </li>
-                  <li><a href="#sec3">
-            <h4>LOL event <span class="glyphicon glyphicon-ok"></span> </h4>
-          <p> come play liege of legends at DA7 KHJ<p>
-          <p> 19 miles<p>
-          <p> 28/10/14<p>
-          </a>
-          </li>
-                  <li><a href="#sec4">
-          <h4>Mine event <span class="glyphicon glyphicon-remove"></span> </h4>
-          <p> come play mincraft at JP9 M05<p>
-          <p> 12 miles<p>
-          <p> 26/10/14<p></a>
-          </li>
+          
 
-{% if events %}
-    <ul>
-    {% for event in events %}
-     {{ event.Game }}
-      {{ event.Description }}
-    {% endfor %}
-    </ul>
-{% else %}
-    <p>No events are available.</p>
-{% endif %}
                 </ul>
           </div>
 

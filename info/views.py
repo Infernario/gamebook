@@ -17,4 +17,9 @@ def index(request):
     return HttpResponse(template.render(context))
 
 def account(request):
-    return True
+    users = User.objects.first()
+    template = loader.get_template('users/account.html')
+    context = RequestContext(request, {
+        'users': users,
+    })
+    return HttpResponse(template.render(context))
