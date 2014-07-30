@@ -10,12 +10,14 @@ class User(models.Model):
     Email = models.CharField(max_length=50)
 
 class Event(models.Model):
+	def __unicode__(self):
+		return self.Description
 	Postcode = models.CharField(max_length=10)
 	Game = models.CharField(max_length=100)
 	Description = models.CharField(max_length=1000)
 	Min_Age = models.IntegerField()
-	Time_Date = models.DateTimeField('time and date of event')
-	Verified = models.CharField(max_length=1)
+	Time_Date = models.DateTimeField('time and date of event (MM/DD/YYYY)')
+	Verified = models.BooleanField()
 	People_Limit = models.IntegerField()
 	People_Attending = models.IntegerField()
 	Owner_user_ID = models.IntegerField()

@@ -1,0 +1,20 @@
+header {
+	margin-bottom:30px;
+}
+body{
+background-color:#000000;
+
+}
+html, body, #map {
+  height: 100%;
+  margin: 0;
+}
+h2{
+ color: #47A3FF
+}
+h1{
+ color: #47A3FF
+}
+p{
+ color: #47A3FF
+}
