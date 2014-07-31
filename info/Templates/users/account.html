@@ -41,46 +41,57 @@
 						
               	
       		</div> 
-			<div class="col-md-6">
+			<div class="col-md-5">
+
               <h2> UserName - jgray</h2>
-			  <h2> Real name - jamie</h2>
-			  <h2> Email address - gray</h2>
+			  <h2> Real name - jamie gray</h2>
+			  <h2> Email address - jjgray107@gmail.com</h2>
 			  <a class="btn btn-default" href="event- new.html" role="button">New event</a>
-			  <a class="btn btn-default" href="event- new.html" role="button">liked events <span class="glyphicon glyphicon-heart"></a>
-			  <a class="btn btn-default" href="event- new.html" role="button">saved events <span class="glyphicon glyphicon-floppy-disk"></a>
+			  <a class="btn btn-default" href="liked.html" role="button">liked events <span class="glyphicon glyphicon-heart"></a>
+			  <a class="btn btn-default" href="attending.html" role="button">saved events <span class="glyphicon glyphicon-floppy-disk"></a>
+
+			  <input type="range" min="5" max="400" value="0" step="5" onchange="showValue(this.value)" />
+<span id="range">0</span>
+<script type="text/javascript">
+function showValue(newValue)
+{
+	document.getElementById("range").innerHTML=newValue;
+}
+</script>
 						
       		</div>
+      		<div class="col-md-1" id="rightcol"> 
+		 <a class="btn btn-default"  role="button">logout</a>
+      		</div>
+
 			<div class="col-md-3" id="leftCol">
               	
 				<div class="well"> 
               	<ul class="nav nav-stacked" id="sidebar">
-                  <li><a href="#sec1">
-				  <h4>wow event <span class="glyphicon glyphicon-ok"></span> </h4>
-				  <p> come play world of war craft at TN45 LJ0<p>
-				  <p> 12 miles<p>
-				  <p> 28/09/14<p>
-				  </a>
-				  </li>
-                  <li><a href="#sec2">
-				  <h4>wow event <span class="glyphicon glyphicon-ok"></span> </h4>
-				  <p> come play world of war craft at DA7 KHJ<p>
-				  <p> 19 miles<p>
-				  <p> 31/10/14<p>
-				  </a>
-				  </li>
-                  <li><a href="#sec3">
-				    <h4>LOL event <span class="glyphicon glyphicon-ok"></span> </h4>
-				  <p> come play liege of legends at DA7 KHJ<p>
-				  <p> 19 miles<p>
-				  <p> 28/10/14<p>
-				  </a>
-				  </li>
-                  <li><a href="#sec4">
-				  <h4>Mine event <span class="glyphicon glyphicon-remove"></span> </h4>
-				  <p> come play mincraft at JP9 M05<p>
-				  <p> 12 miles<p>
-				  <p> 26/10/14<p></a>
-				  </li>
+
+{% if events %}
+    
+    {% for event in events %}
+     <li > <a href="#sec2" > 
+      <h4> {{ event.Game }} 
+     {% if  event.Verified  %}
+        <span class="glyphicon glyphicon-ok"></span> 
+     {% else %}
+        <span class="glyphicon glyphicon-remove"></span>
+     {% endif %}
+</h4>
+ 
+  <p> {{ event.Description }} </p>
+  <p> {{ event.Postcode }} </p>
+  <p> Minimum Age: {{ event.Min_Age }} </p>
+  <p> {{ event.Time_Date }} </p>
+  <p> Attendees: {{ event.People_Attending }} / {{ event.People_Limit }} </p>
+  </li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No events are available.</p>
+    {% endif %}
               	</ul>
   				</div>
 

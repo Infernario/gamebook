@@ -10,7 +10,10 @@ https://docs.djangoproject.com/en/1.6/ref/settings/
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
+import multiprocessing
+import logging
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
+
 
 
 # Quick-start development settings - unsuitable for production
@@ -85,3 +88,7 @@ STATIC_URL = '/static/'
 
 TEMPLATE_DIRS = (
     "/Users/jamiegray/projects/gamebook/info/templates/users/" )
+
+
+logger = multiprocessing.log_to_stderr()
+logger.setLevel(logging.DEBUG)

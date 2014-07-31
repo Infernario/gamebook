@@ -45,13 +45,13 @@ function initialize()
     map: myMap
   });
   var infowindow1 = new google.maps.InfoWindow({
-    content: 'test1'
+    content: 'Kerbal Space Program event'
   });
   var infowindow2 = new google.maps.InfoWindow({
-    content: 'test2'
+    content: 'DnD event'
   });
   var infowindow3 = new google.maps.InfoWindow({
-    content: 'test3'
+    content: 'World of Warcraft event'
   });
   google.maps.event.addListener(marker1, 'click', function(){
     infowindow1.open(myMap,marker1);
@@ -110,7 +110,7 @@ window.onload = loadScript;
 {% if events %}
     
     {% for event in events %}
-     <li > <a href="#sec2" > 
+     <li > <a href="DND.html" > 
       <h4> {{ event.Game }} 
      {% if  event.Verified  %}
         <span class="glyphicon glyphicon-ok"></span> 
