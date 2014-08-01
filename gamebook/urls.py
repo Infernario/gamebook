@@ -13,6 +13,5 @@ urlpatterns = patterns('',
     url(r'^$', 'info.views.index'),
     url(r'^account/attending.html', 'info.views.attending'),
     url(r'^DND.html', 'info.views.dnd'),
-    url(r'^contact', 'info.views.contact'),
-    url(r'^static/(?P<path>.*)$', 'django.views.static.serve', { 'document_root': '/static/' })
+    url(r'^contact', 'info.views.contact')
 )

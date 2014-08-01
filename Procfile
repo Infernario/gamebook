@@ -1,1 +1,1 @@
-web: gunicorn gamebook.wsgi collectstatic --log-file -
+web: gunicorn gamebook.wsgi --log-file -
