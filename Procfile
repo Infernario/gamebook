@@ -1,0 +1,1 @@
+web: gunicorn gamebook.wsgi --log-file -
