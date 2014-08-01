@@ -88,7 +88,8 @@ STATIC_URL = '/static/'
 
 TEMPLATE_DIRS = (
     "/Users/jamiegray/projects/gamebook/info/templates/users/"
-    ,"info/templates/users/" )
+    ,"info/templates/users/"
+    ,os.path.join(BASE_DIR, "templates"), )
 
 
 logger = multiprocessing.log_to_stderr()
