@@ -13,5 +13,6 @@ urlpatterns = patterns('',
     url(r'^$', 'info.views.index'),
     url(r'^account/attending.html', 'info.views.attending'),
     url(r'^DND.html', 'info.views.dnd'),
-    url(r'^contact', 'info.views.contact')
+    url(r'^contact', 'info.views.contact'),
+    url(r'^events.html', 'info.views.events')
 )

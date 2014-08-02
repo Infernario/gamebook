@@ -49,3 +49,11 @@ def contact(request):
         'events': events,
     })
     return HttpResponse(template.render(context))
+
+def events(request):
+    events = Event.objects.all()
+    template = loader.get_template('users/contact.html')
+    context = RequestContext(request, {
+        'events': events,
+    })
+    return HttpResponse(template.render(context))
