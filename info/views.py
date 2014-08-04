@@ -52,7 +52,7 @@ def contact(request):
 
 def events(request):
     events = Event.objects.all()
-    template = loader.get_template('users/contact.html')
+    template = loader.get_template('users/events.html')
     context = RequestContext(request, {
         'events': events,
     })
